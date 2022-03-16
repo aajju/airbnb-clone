@@ -60,6 +60,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "django.middleware.locale.LocaleMiddleware",
 ]
 
 ROOT_URLCONF = "config.urls"
@@ -132,6 +133,8 @@ USE_TZ = True
 
 STATIC_URL = "/static/"
 
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
+
 AUTH_USER_MODEL = "users.User"
 MEDIA_ROOT = os.path.join(BASE_DIR, "uploads")
 
@@ -147,3 +150,17 @@ EMAIL_HOST_PASSWORD = os.environ.get("NAVER_PASSWORD")
 EMAIL_FROM = "aajju@naver.com"
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
+
+
+# Auth
+
+LOGIN_URL = "/users/login/"
+
+
+# Locale
+
+LOCALE_PATHS = (os.path.join(BASE_DIR, "locale"),)
+
+LANGUAGE_CODE = "en"
+
+LANGUAGE_COOKIE_NAME = "django_language"
